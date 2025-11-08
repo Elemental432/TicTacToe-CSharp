@@ -14,8 +14,9 @@ O programa utiliza o algoritmo **MiniMax** para encontrar a melhor jogada, garan
 ---
 
 ## Dicas
-- Para alterar a dificuldade, visite **src/Enums/Difficulty.cs**, copie o nome da dificuldade e vá até **src/Program.cs**, então altere a variável **DIFFICULTY_LEVEL** para a dificuldade desejada.
+- Para alterar a dificuldade, visite **src/Enums/Difficulty.cs**, copie o nome da dificuldade e vá até **src/Program.cs**, então altere a constante **DIFFICULTY_LEVEL** para a dificuldade desejada.
 - Se quiser ajustar as chances para cada nível de dificuldade, vá até **src\Players\AIPlayer.cs**, dentro do construtor as chances são inicializadas, quanto maior a chance, mais fácil será.
+- Para alterar o tempo de resposta do bot, vá até **src/Program.cs**, e altere a constante **TIMER** para o tempo desejado. (1000 = 1 segundo).
 
 ---
 
