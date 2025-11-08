@@ -13,6 +13,12 @@ O programa utiliza o algoritmo **MiniMax** para encontrar a melhor jogada, garan
 
 ---
 
+## Dicas
+- Para alterar a dificuldade, visite 'src/Enums/Difficulty.cs', copie o nome da dificuldade e vá até 'src/Program.cs', então altere a variável 'DIFFICULTY_LEVEL' para a dificuldade desejada.
+- Se quiser ajustar as chances para cada nível de dificuldade, vá até 'src\Players\AIPlayer.cs', dentro do construtor as chances são inicializadas, quanto maior a chance, mais fácil será.
+
+---
+
 ## 📦 Como executar
 1. Clone este repositório:
    ```bash
