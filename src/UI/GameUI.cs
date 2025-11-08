@@ -17,7 +17,7 @@ public sealed class GameUI {
 	}
 	
 	public void EntryChoice()
-		=> Console.Write("Choose a number between 1 and 9: ");
+		=> Console.Write($"Choose a number between 1 and {_game.Board.TotalSquares}: ");
 	
 	public void InvalidMove()
 		=> Console.WriteLine("Invalid move. Try again.");

@@ -12,6 +12,7 @@ public sealed class AIPlayer {
 	public AIPlayer(Game game) {
 		_game = game;
 		_errorChance = Program.DIFFICULTY_LEVEL switch {
+			Difficulty.VeryEasy => 1.0,
 			Difficulty.Easy => 0.75,
 			Difficulty.Medium => 0.45,
 			Difficulty.Hard => 0.15,
@@ -54,7 +55,7 @@ public sealed class AIPlayer {
 			for (sbyte j = 0; j < GameBoard.BOARD_SIZE; j++) {
 				if (_game.Board.CanPlayAt(i, j)) {
 					_game.Board.PlayAt(i, j, _symbol);
-					double score = MiniMax(1);
+					double score = MiniMax();
 					_game.Board.UndoMoveAt(i, j);
 					
 					if (score > bestScore) {
@@ -68,7 +69,7 @@ public sealed class AIPlayer {
 		return move;
 	}
 	
-	private double MiniMax(sbyte depth, bool isMaximizing = false) {
+	private double MiniMax(bool isMaximizing = false) {
 		if (GamedEnded(out double score))
 			return score;
 		
@@ -78,7 +79,7 @@ public sealed class AIPlayer {
 			for (sbyte j = 0; j < GameBoard.BOARD_SIZE; j++) {
 				if (_game.Board.CanPlayAt(i, j)) {
 					_game.Board.PlayAt(i, j, symbol);
-					score = MiniMax(--depth, !isMaximizing);
+					score = MiniMax(!isMaximizing);
 					_game.Board.UndoMoveAt(i, j);
 					
 					if (isMaximizing)
