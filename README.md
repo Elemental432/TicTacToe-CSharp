@@ -23,3 +23,4 @@ O programa utiliza o algoritmo **MiniMax** para encontrar a melhor jogada, garan
 1. Clone este repositório:
    ```bash
    git clone https://github.com/Elemental432/TicTacToe-CSharp.git
+2. Navegue até a pasta clonada pelo git. Dentro da pasta **TicTacToe-CSharp**, abra o prompt de comando e use **dotnet run**, o programa utiliza **Console.Clear()** para limpar o Console.
