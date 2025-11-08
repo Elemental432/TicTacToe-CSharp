@@ -6,7 +6,7 @@ using TicTacToe.GameCore;
 public static class Program {
 	private static readonly Game _game = new Game();
 	
-	// Access 'TicTacToe/src/Enums/Difficulty.cs' to view the difficulties
+	// Access 'src/Enums/Difficulty.cs' to view the difficulties
 	public const Difficulty DIFFICULTY_LEVEL = Difficulty.Medium;
 	
 	[STAThread]
