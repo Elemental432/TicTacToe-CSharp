@@ -4,10 +4,12 @@ using TicTacToe.Enums;
 using TicTacToe.GameCore;
 
 public static class Program {
-	private static readonly Game _game = new Game();
-	
 	// Access 'src/Enums/Difficulty.cs' to view the difficulties
 	public const Difficulty DIFFICULTY_LEVEL = Difficulty.Medium;
+	
+	private const int TIMER = 3000;
+	
+	private static readonly Game _game = new Game();
 	
 	[STAThread]
 	public static async Task Main() {
@@ -31,7 +33,7 @@ public static class Program {
 				continue;
 			}
 			
-			await _game.UI.Delay(3000);
+			await _game.UI.Delay(TIMER);
 			_game.Bot.Play();
 			_game.UI.ShowBoard();
 			
