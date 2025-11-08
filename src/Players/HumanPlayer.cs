@@ -11,7 +11,7 @@ public sealed class HumanPlayer {
 		_game = game;
 	}
 	
-	public void Play(sbyte i) {
+	public void PlayAt(sbyte i) {
 		if (_game.TryAccessMatrix(i, out (sbyte row, sbyte col) move)) {
 			if (_game.Board.CanPlayAt(move.row, move.col))
 				_game.Board.PlayAt(move.row, move.col, Symbol);
