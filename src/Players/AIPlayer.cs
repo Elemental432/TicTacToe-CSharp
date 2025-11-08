@@ -12,6 +12,7 @@ public sealed class AIPlayer {
 	public AIPlayer(Game game) {
 		_game = game;
 		_errorChance = Program.DIFFICULTY_LEVEL switch {
+			Difficulty.VeryEasy => 1.0,
 			Difficulty.Easy => 0.75,
 			Difficulty.Medium => 0.45,
 			Difficulty.Hard => 0.15,
