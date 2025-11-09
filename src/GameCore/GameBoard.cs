@@ -27,6 +27,15 @@ public sealed class GameBoard {
 	public void PlayAt(sbyte row, sbyte col, Symbol symbol) => Matrix[row][col] = symbol;
 	public void UndoMoveAt(sbyte row, sbyte col) => Matrix[row][col] = null;
 	
+	public bool IsValidIndex(sbyte index) {
+		if (index > 0 && index < (TotalSquares + 1)) {
+			if (TryAccessMatrix(index, out (sbyte row, sbyte col) move))
+				return CanPlayAt(move.row, move.col);
+		}
+		
+		return false;
+	}
+	
 	public bool CheckRows(out Symbol? symbol) {
 		foreach (var row in Matrix) {
 			if (CheckLine(row, out symbol))

@@ -17,15 +17,6 @@ public sealed class Game {
 		Bot = new AIPlayer(this);
 	}
 	
-	public bool IsValidIndex(sbyte index) {
-		if (index > 0 && index < (Board.TotalSquares + 1)) {
-			if (Board.TryAccessMatrix(index, out (sbyte row, sbyte col) move))
-				return Board.CanPlayAt(move.row, move.col);
-		}
-		
-		return false;
-	}
-	
 	public bool CheckWinner(out Symbol? symbol) {
 		if (Board.CheckRows(out symbol))
 			return true;

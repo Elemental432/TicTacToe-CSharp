@@ -19,7 +19,7 @@ public static class Program {
 			_game.UI.EntryChoice();
 			string? input = _game.UI.GetInput();
 			if (TryCheckInput(input, out sbyte i)) {
-				if (_game.IsValidIndex(i)) {
+				if (_game.Board.IsValidIndex(i)) {
 					_game.Player.PlayAt(i);
 					_game.UI.ShowBoard();
 					if (_game.GamedEnded())
