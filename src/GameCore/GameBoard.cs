@@ -8,19 +8,37 @@ public sealed class GameBoard {
 	public const sbyte BOARD_SIZE = 3;
 	
 	public readonly ushort TotalSquares;
-	
 	public readonly List<List<Symbol?>> Matrix = new List<List<Symbol?>>();
 	public bool AllSquaresAreFilled => Matrix.All(rows => rows.All(col => col is not null));
+	
+	private readonly Dictionary<sbyte, (sbyte, sbyte)> _matrixIndexers = new Dictionary<sbyte, (sbyte, sbyte)>();
 	
 	public GameBoard() {
 		TotalSquares = BOARD_SIZE * BOARD_SIZE;
 		
+		InitializeMatrix();
+		InitializeMatrixIndexers();
+	}
+	
+	private void InitializeMatrix() {
 		for (sbyte row = 0; row < BOARD_SIZE; row++) {
 			Matrix.Add(new List<Symbol?>());
 			for (sbyte i = 0; i < BOARD_SIZE; i++)
 				Matrix[row].Add(null);
 		}
 	}
+	
+	private void InitializeMatrixIndexers() {
+		sbyte i = 1;
+		for (sbyte row = 0; row < GameBoard.BOARD_SIZE; row++) {
+			for (sbyte col = 0; col < GameBoard.BOARD_SIZE; col++) {
+				_matrixIndexers[i++] = (row, col);
+			}
+		}
+	}
+	
+	public bool TryAccessMatrix(sbyte index, out (sbyte, sbyte) tuple)
+		=> _matrixIndexers.TryGetValue(index, out tuple);
 	
 	public bool CanPlayAt(sbyte row, sbyte col)
 		=> Matrix[row][col] is null;

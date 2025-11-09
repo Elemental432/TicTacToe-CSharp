@@ -10,33 +10,21 @@ public sealed class Game {
 	public readonly HumanPlayer Player;
 	public readonly AIPlayer Bot;
 	
-	private readonly Dictionary<sbyte, (sbyte, sbyte)> _matrixIndexers = new Dictionary<sbyte, (sbyte, sbyte)>();
-	
 	public Game() {
 		Board = new GameBoard();
 		UI = new GameUI(this);
 		Player = new HumanPlayer(this);
 		Bot = new AIPlayer(this);
-		
-		sbyte i = 1;
-		for (sbyte row = 0; row < GameBoard.BOARD_SIZE; row++) {
-			for (sbyte col = 0; col < GameBoard.BOARD_SIZE; col++) {
-				_matrixIndexers[i++] = (row, col);
-			}
-		}
 	}
 	
 	public bool IsValidIndex(sbyte index) {
 		if (index > 0 && index < (Board.TotalSquares + 1)) {
-			if (TryAccessMatrix(index, out (sbyte row, sbyte col) move))
+			if (Board.TryAccessMatrix(index, out (sbyte row, sbyte col) move))
 				return Board.CanPlayAt(move.row, move.col);
 		}
 		
 		return false;
 	}
-	
-	public bool TryAccessMatrix(sbyte index, out (sbyte, sbyte) tuple)
-		=> _matrixIndexers.TryGetValue(index, out tuple);
 	
 	public bool CheckWinner(out Symbol? symbol) {
 		if (Board.CheckRows(out symbol))

@@ -36,7 +36,7 @@ public sealed class AIPlayer {
 		List<(sbyte, sbyte)> disponibleMoves = new List<(sbyte, sbyte)>();
 		
 		for (sbyte i = 1; i < _game.Board.TotalSquares + 1; i++) {
-			if (_game.TryAccessMatrix(i, out (sbyte row, sbyte col) move)) {
+			if (_game.Board.TryAccessMatrix(i, out (sbyte row, sbyte col) move)) {
 				if (_game.Board.CanPlayAt(move.row, move.col)) {
 					disponibleMoves.Add(move);
 				}
